@@ -32,37 +32,37 @@ This project will handle all communication with twilio and provide back neat slo
 <li><em>...to be continued</em></li>
 </ul>
 <a id="md:using-the-lib-the-basics" class="tsd-anchor"></a><h3><a href="#md:using-the-lib-the-basics">Using the lib, the basics:</a></h3><ul>
-<li>First you need to call the <a href="./docs/modules.md#chatinit">chatInit</a> to get the twilio chat initialized. Do this asap in app startup and only call this once since it will throw an error if you try and init the chat multiple times. There is a <a href="./docs/modules.md#chatRestart">chatRestart</a> should you need to restart it.</li>
-<li>Call the <a href="./docs/modules.md#chatUpdateUserAttributes">chatUpdateUserAttributes</a> to update the users attributes as they navigate the app.<ul>
-<li>This function can be called before or after the <a href="./docs/modules.md#chatinit">chatInit</a> is done since it will just wait for the client to be ready before sending through attribute updates.</li>
+<li>First you need to call the <a href="functions/chatInit.html">chatInit</a> to get the twilio chat initialized. Do this asap in app startup and only call this once since it will throw an error if you try and init the chat multiple times. There is a <a href="functions/chatRestart.html">chatRestart</a> should you need to restart it.</li>
+<li>Call the <a href="functions/chatUpdateUserAttributes.html">chatUpdateUserAttributes</a> to update the users attributes as they navigate the app.<ul>
+<li>This function can be called before or after the <a href="functions/chatInit.html">chatInit</a> is done since it will just wait for the client to be ready before sending through attribute updates.</li>
 <li>This is the function that sets the <code>ss</code> object on the user attributes.</li>
 </ul>
 </li>
 <li>Conversations List<ul>
-<li>If/when you want to list the conversations the user is part of(either on app init or screen load), call the <a href="./docs/modules.md#chatConversationListInit">chatConversationListInit</a> to get it started(if it is already started it will just ignore this call). Thus conversation data will only be loaded once the <a href="./docs/modules.md#chatConversationListInit">chatConversationListInit</a> is called and from then on hold that data for further use.</li>
-<li>Then call the <a href="./docs/modules.md#chatConversationListRegister">chatConversationListRegister</a> to get events about the conversation list and list the data. Remember to call the unregister function when your component unmounts.<ul>
+<li>If/when you want to list the conversations the user is part of(either on app init or screen load), call the <a href="functions/chatConversationListInit.html">chatConversationListInit</a> to get it started(if it is already started it will just ignore this call). Thus conversation data will only be loaded once the <a href="functions/chatConversationListInit.html">chatConversationListInit</a> is called and from then on hold that data for further use.</li>
+<li>Then call the <a href="functions/chatConversationListRegister.html">chatConversationListRegister</a> to get events about the conversation list and list the data. Remember to call the unregister function when your component unmounts.<ul>
 <li>NOTE The objects you gets back are for the conversations are passed by ref and should thus not be altered! Create a copy of the data should you really need to modify it.</li>
-<li>There is also the <a href="./docs/modules.md#helperDateGetMessageLastDate">helperDateGetMessageLastDate</a> to help format the last message date for display when viewing from the candidate perspective.</li>
+<li>There is also the <a href="functions/helperDateGetMessageLastDate.html">helperDateGetMessageLastDate</a> to help format the last message date for display when viewing from the candidate perspective.</li>
 </ul>
 </li>
-<li>Look at all the events on the <a href="./docs/modules.md#chatConversationListRegister">chatConversationListRegister</a> documentation and make sure to handle them all as suggested.</li>
+<li>Look at all the events on the <a href="functions/chatConversationListRegister.html">chatConversationListRegister</a> documentation and make sure to handle them all as suggested.</li>
 </ul>
 </li>
 <li>Conversations messages<ul>
-<li>Call the <a href="./docs/modules.md#chatConversationMessagesRegister">chatConversationMessagesRegister</a> to get events about the conversation and messages. Remember to call the unregister function when your component unmounts or you don&#39;t want to track that conversation messages anymore.<ul>
+<li>Call the <a href="functions/chatConversationMessagesRegister.html">chatConversationMessagesRegister</a> to get events about the conversation and messages. Remember to call the unregister function when your component unmounts or you don&#39;t want to track that conversation messages anymore.<ul>
 <li>NOTE The objects you gets back are for the conversations are passed by ref and should thus not be altered! Create a copy of the data should you really need to modify it.</li>
-<li>There is also the <a href="./docs/modules.md#helperDateGetMessageLastDate">helperDateGetMessageLastDate</a> to help format the message date for display when viewing from the candidate perspective.</li>
+<li>There is also the <a href="functions/helperDateGetMessageLastDate.html">helperDateGetMessageLastDate</a> to help format the message date for display when viewing from the candidate perspective.</li>
 </ul>
 </li>
-<li>Look at all the events on the <a href="./docs/modules.md#chatConversationMessagesRegister">chatConversationMessagesRegister</a> documentation and make sure to handle them all as suggested.</li>
-<li>Next implement the <a href="./docs/modules.md#chatConversationMessagesLoadMore">chatConversationMessagesLoadMore</a> to load more messages when user scrolls back in the conversation.</li>
-<li>Next implement the <a href="./docs/modules.md#chatConversationMessagesSend">chatConversationMessagesSend</a> to send a message to the conversation.</li>
-<li>Next implement the <a href="./docs/modules.md#chatConversationMessagesTyping">chatConversationMessagesTyping</a> to send typing event from your side to indicate to others that you are busy typing.</li>
-<li>Next implement the <a href="./docs/modules.md#chatConversationMessagesFocused">chatConversationMessagesFocused</a> so that the lib can know when to mark messages you have read as read. This will also be used in the future to determine when to send through push notifications.</li>
-<li>Next, subscribe to focused conversations using <a href="./docs/modules.md#chatConversationMessagesFocusedRegister">chatConversationMessagesFocusedRegister</a> so that the lib can update the parent on focused state of conversations. This can be used to send push notifications for incoming messages of conversations that are not currently focused.</li>
+<li>Look at all the events on the <a href="functions/chatConversationMessagesRegister.html">chatConversationMessagesRegister</a> documentation and make sure to handle them all as suggested.</li>
+<li>Next implement the <a href="functions/chatConversationMessagesLoadMore.html">chatConversationMessagesLoadMore</a> to load more messages when user scrolls back in the conversation.</li>
+<li>Next implement the <a href="functions/chatConversationMessagesSend.html">chatConversationMessagesSend</a> to send a message to the conversation.</li>
+<li>Next implement the <a href="functions/chatConversationMessagesTyping.html">chatConversationMessagesTyping</a> to send typing event from your side to indicate to others that you are busy typing.</li>
+<li>Next implement the <a href="functions/chatConversationMessagesFocused.html">chatConversationMessagesFocused</a> so that the lib can know when to mark messages you have read as read. This will also be used in the future to determine when to send through push notifications.</li>
+<li>Next, subscribe to focused conversations using <a href="functions/chatConversationMessagesFocusedRegister.html">chatConversationMessagesFocusedRegister</a> so that the lib can update the parent on focused state of conversations. This can be used to send push notifications for incoming messages of conversations that are not currently focused.</li>
 </ul>
 </li>
-<li>To start a new conversation call the <a href="./docs/modules.md#chatConversationStart">chatConversationStart</a>.</li>
+<li>To start a new conversation call the <a href="functions/chatConversationStart.html">chatConversationStart</a>.</li>
 </ul>
 <a id="md:using-the-logger-for-the-lib" class="tsd-anchor"></a><h3><a href="#md:using-the-logger-for-the-lib">Using the logger for the lib:</a></h3><p>The library has a built in logger that will log the big twilio objects in a more readable format.
 It has two levels of logging i.e normal log level and extra log level, </p>
@@ -80,14 +80,14 @@ example of a filter: <code>one,two ,three &amp;&amp; four,five &amp;&amp; six &a
 </ul>
 <p><strong>Usage</strong></p>
 <ul>
-<li>Call <a href="./docs/modules.md#chatlogpipecallback">chatLogPipeCallback</a> and pass a callback that handles the displaying of logs according to your platform i.e. <code>console.log</code> or <code>os_log</code> etc.
+<li>Call <a href="functions/chatLogPipeCallback.html">chatLogPipeCallback</a> and pass a callback that handles the displaying of logs according to your platform i.e. <code>console.log</code> or <code>os_log</code> etc.
 This should be called during the application initialization</li>
-<li>Call <a href="./docs/modules.md#chatlogenable">chatLogEnable</a> to enable logging with normal log level</li>
-<li>Call <a href="./docs/modules.md#chatlogextra">chatLogExtra</a> to activate Extra log level</li>
-<li>Call <a href="./docs/modules.md#chatlogfilter">chatLogFilter</a> with your filter string/array of strings to filter logs</li>
+<li>Call <a href="functions/chatLogEnable.html">chatLogEnable</a> to enable logging with normal log level</li>
+<li>Call <a href="functions/chatLogExtra.html">chatLogExtra</a> to activate Extra log level</li>
+<li>Call <a href="functions/chatLogFilter.html">chatLogFilter</a> with your filter string/array of strings to filter logs</li>
 </ul>
 <p>To persist the logging configuration across restarts/reloads of the app, the logging configs need to be persisted in a localStorage and retrieved during app init to reconfigure the logger</p>
-<a id="md:full-api" class="tsd-anchor"></a><h3><a href="#md:full-api">Full Api</a></h3><p><a href="./docs/modules.md">Here</a></p>
+<a id="md:full-api" class="tsd-anchor"></a><h3><a href="#md:full-api">Full Api</a></h3><p><a href="modules.html">Here</a></p>
 </div></div>
 <div class="col-sidebar">
 <div class="page-menu">
